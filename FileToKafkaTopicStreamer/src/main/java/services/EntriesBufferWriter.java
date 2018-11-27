@@ -7,7 +7,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class FileToBufferWriter {
+public class EntriesBufferWriter {
 
     public void readFileFromFileToBuffer(String filePath, FileEntriesBuffer buffer) {
 
@@ -22,9 +22,9 @@ public class FileToBufferWriter {
                 System.out.println("Reading from file " + readLine);
                 buffer.getBuffer().put(readLine);
             }
-            buffer.setAllTheFileWasStreamedToBuffer(true);
+            buffer.streamingFinished = true;
             b.close();
-            System.out.println(buffer.getAllTheFileWasStreamedToBuffer());
+          //  System.out.println(buffer.getAllTheFileWasStreamedToBuffer());
 
         } catch( IOException | InterruptedException e)
         {
