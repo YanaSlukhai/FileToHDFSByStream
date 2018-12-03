@@ -16,7 +16,7 @@ public class EntriesBufferWriter {
 
             String readLine;
             while ((readLine = b.readLine()) != null) {
-                System.out.println("Reading from file " + readLine);
+
                 if (!buffer.isFull())
                     buffer.put(readLine);
                 else

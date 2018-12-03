@@ -10,6 +10,7 @@ public class EntriesBufferReader implements Runnable {
     private Producer producer;
     private String topic;
     private volatile long startTime = System.nanoTime();
+    private Integer PROCESSED_LINES_COUNT = 0;
 
     public EntriesBufferReader(FileEntriesBuffer<String> buffer, Producer producer, String topic) {
         this.buffer = buffer;
@@ -20,7 +21,8 @@ public class EntriesBufferReader implements Runnable {
 
     public void run() {
         readEntry();
-        System.out.println(System.nanoTime() - startTime);
+        System.out.println(System.nanoTime() - startTime + " COUNT = " + PROCESSED_LINES_COUNT);
+
     }
 
     private void readEntry() {
@@ -28,6 +30,7 @@ public class EntriesBufferReader implements Runnable {
             if (buffer.isEmpty()) {
                 try {
                     Thread.sleep(100);
+                    System.out.println("reader sleeps");
                 } catch (InterruptedException ignored) {
                 }
             } else {
@@ -48,7 +51,8 @@ public class EntriesBufferReader implements Runnable {
 
     private void writeToKafkaTopic(String message) {
         producer.send(new ProducerRecord(topic, message));
-        System.out.println(" Writing by thread " + Thread.currentThread().getId() + "   " + message);
+        PROCESSED_LINES_COUNT++;
+        //System.out.println(" Writing by thread " + Thread.currentThread().getId() + "   " + message);
     }
 
 }

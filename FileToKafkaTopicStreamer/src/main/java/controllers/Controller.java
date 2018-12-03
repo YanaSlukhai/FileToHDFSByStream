@@ -29,12 +29,18 @@ public class Controller {
                 ()-> writer.readFileFromFileToBuffer(args[0], buffer));
         tReader.start();
 
-        EntriesBufferReader buffertoKafkaWriter = new EntriesBufferReader(buffer, producer, "test");
-
+        EntriesBufferReader buffertoKafkaWriter = new EntriesBufferReader(buffer, producer, args[1]);
         ArrayList<Thread>  bufferToKafkaWriterthreads = new ArrayList<>();
         for(int i = 0; i <4; i++ ) {
             bufferToKafkaWriterthreads.add(new Thread(buffertoKafkaWriter));
             bufferToKafkaWriterthreads.get(i).start();
+            try {
+                bufferToKafkaWriterthreads.get(i).join();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
+        producer.close();
+
     }
 }

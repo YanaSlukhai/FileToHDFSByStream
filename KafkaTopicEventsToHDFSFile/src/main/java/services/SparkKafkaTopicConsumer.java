@@ -38,7 +38,7 @@ public class SparkKafkaTopicConsumer implements KafkaTopicConsumer{
         kafkaParams.put("key.deserializer", StringDeserializer.class);
         kafkaParams.put("value.deserializer", StringDeserializer.class);
         kafkaParams.put("group.id", "1");
-        kafkaParams.put("auto.offset.reset","latest");
+        kafkaParams.put("auto.offset.reset","earliest");
         kafkaParams.put("enable.auto.commit", false);
 
         Collection<String> topics = Arrays.asList(kafkaTopic);
@@ -49,19 +49,17 @@ public class SparkKafkaTopicConsumer implements KafkaTopicConsumer{
                         LocationStrategies.PreferConsistent(),
                         ConsumerStrategies.<String, String>Subscribe(topics, kafkaParams)
                 );
-        System.out.println(" Printing before");
+
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        stream.mapToPair(record -> new Tuple2<>(record.key(), record.value())).count().print();
         stream.mapToPair(record -> new Tuple2<>(record.key(), record.value())).saveAsHadoopFiles(
-                "hdfs://sandbox-hdp.hortonworks.com:6667/user/spark/stream/", "txt",
+                "hdfs://sandbox-hdp.hortonworks.com/user/spark/stream/", "txt",
                 Text.class, IntWritable.class, TextOutputFormat.class);
-        stream.foreachRDD(rdd -> myFunction(rdd));
 
-
-        System.out.println(" Printing after");
         streamingContext.start();
         try {
             streamingContext.awaitTermination();
@@ -71,7 +69,4 @@ public class SparkKafkaTopicConsumer implements KafkaTopicConsumer{
 
     }
 
-    private void myFunction(org.apache.spark.api.java.JavaRDD<ConsumerRecord<String, String>> rdd) {
-        System.out.print("s");
-    }
 }
