@@ -4,8 +4,8 @@ import model.FileEntriesBuffer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerConfig;
-import services.FileToBufferWriter;
-import services.ThreadedBuffertoKafkaWriter;
+import services.EntriesBufferWriter;
+import services.EntriesBufferReader;
 
 import java.util.ArrayList;
 import java.util.Properties;
@@ -13,7 +13,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class Controller {
     public static void main(String[]args){
-        FileToBufferWriter writer = new FileToBufferWriter();
+        EntriesBufferWriter writer = new EntriesBufferWriter();
         FileEntriesBuffer buffer = new FileEntriesBuffer(new LinkedBlockingQueue<>());
 
         Properties props = new Properties();
@@ -29,7 +29,7 @@ public class Controller {
                 ()-> writer.readFileFromFileToBuffer(args[0], buffer));
         tReader.start();
 
-        ThreadedBuffertoKafkaWriter buffertoKafkaWriter = new ThreadedBuffertoKafkaWriter(buffer, producer, "test");
+        EntriesBufferReader buffertoKafkaWriter = new EntriesBufferReader(buffer, producer, "test");
 
         ArrayList<Thread>  bufferToKafkaWriterthreads = new ArrayList<>();
         for(int i = 0; i <4; i++ ) {

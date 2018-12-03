@@ -2,27 +2,30 @@ package model;
 
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class FileEntriesBuffer {
-    private LinkedBlockingQueue<String> buffer;
-    private volatile Boolean allTheFileWasStreamedToBuffer = false;
+public class FileEntriesBuffer<T> {
+    private LinkedBlockingQueue<T> buffer;
+    public volatile Boolean streamingFinished = false;
+    private static final Integer MAX_SIZE = 100000;
 
-    public Boolean getAllTheFileWasStreamedToBuffer() {
-        return allTheFileWasStreamedToBuffer;
-    }
-
-    public Boolean allTheFileWasStreamedToBuffer() {
-        return allTheFileWasStreamedToBuffer;
-    }
-
-    public void setAllTheFileWasStreamedToBuffer(Boolean allTheFileWasStreamedToBuffer) {
-        this.allTheFileWasStreamedToBuffer = allTheFileWasStreamedToBuffer;
-    }
-
-    public FileEntriesBuffer(LinkedBlockingQueue<String> buffer) {
+    public FileEntriesBuffer(LinkedBlockingQueue<T> buffer) {
         this.buffer = buffer;
     }
 
-    public LinkedBlockingQueue<String> getBuffer() {
-        return buffer;
+    public Boolean isEmpty() {
+        return buffer.size() == 0;
     }
+
+    public Boolean isFull() {
+        return buffer.size() >= MAX_SIZE;
+    }
+
+    public T poll() {
+        return buffer.poll();
+    }
+
+    public void put(T entry) throws InterruptedException {
+        if (!this.isFull())
+            buffer.put(entry);
+    }
+
 }

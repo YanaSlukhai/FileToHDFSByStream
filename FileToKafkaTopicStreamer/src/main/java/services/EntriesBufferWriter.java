@@ -7,30 +7,28 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class FileToBufferWriter {
+public class EntriesBufferWriter {
 
     public void readFileFromFileToBuffer(String filePath, FileEntriesBuffer buffer) {
 
-        try
-        {
-            File f = new File(filePath);
-            BufferedReader b = new BufferedReader(new FileReader(f));
-            String readLine = "";
-
+        try (BufferedReader b = new BufferedReader(new FileReader(new File(filePath)))) {
             System.out.println("Reading file using Buffered Reader");
+
+            String readLine;
             while ((readLine = b.readLine()) != null) {
                 System.out.println("Reading from file " + readLine);
-                buffer.getBuffer().put(readLine);
+                if (!buffer.isFull())
+                    buffer.put(readLine);
+                else
+                    Thread.sleep(1);
             }
-            buffer.setAllTheFileWasStreamedToBuffer(true);
-            b.close();
-            System.out.println(buffer.getAllTheFileWasStreamedToBuffer());
 
-        } catch( IOException | InterruptedException e)
-        {
+            buffer.streamingFinished = true;
+            //  System.out.println(buffer.getAllTheFileWasStreamedToBuffer());
+
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-}
-
+    }
 
 }
