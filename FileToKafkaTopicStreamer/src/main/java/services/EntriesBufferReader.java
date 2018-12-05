@@ -9,7 +9,6 @@ public class EntriesBufferReader implements Runnable {
     private FileEntriesBuffer<String> buffer;
     private Producer producer;
     private String topic;
-    private volatile long startTime = System.nanoTime();
     private Integer PROCESSED_LINES_COUNT = 0;
 
     public EntriesBufferReader(FileEntriesBuffer<String> buffer, Producer producer, String topic) {
@@ -18,11 +17,9 @@ public class EntriesBufferReader implements Runnable {
         this.producer = producer;
     }
 
-
     public void run() {
         readEntry();
-        System.out.println(System.nanoTime() - startTime + " COUNT = " + PROCESSED_LINES_COUNT);
-
+        System.out.println(" COUNT = " + PROCESSED_LINES_COUNT);
     }
 
     private void readEntry() {
@@ -43,7 +40,6 @@ public class EntriesBufferReader implements Runnable {
             }
         }
     }
-
 
     private Boolean readIsOver() {
         return buffer.streamingFinished && buffer.isEmpty();

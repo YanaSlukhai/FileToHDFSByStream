@@ -7,16 +7,22 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class EntriesBufferWriter {
+public class EntriesBufferWriter implements Runnable {
+    private String filePath;
+    private FileEntriesBuffer buffer;
 
-    public void readFileFromFileToBuffer(String filePath, FileEntriesBuffer buffer) {
+    public EntriesBufferWriter(String filePath, FileEntriesBuffer buffer) {
+        this.buffer = buffer;
+        this.filePath = filePath;
+    }
+
+    public void readFileFromFileToBuffer() {
 
         try (BufferedReader b = new BufferedReader(new FileReader(new File(filePath)))) {
             System.out.println("Reading file using Buffered Reader");
 
             String readLine;
             while ((readLine = b.readLine()) != null) {
-
                 if (!buffer.isFull())
                     buffer.put(readLine);
                 else
@@ -24,11 +30,14 @@ public class EntriesBufferWriter {
             }
 
             buffer.streamingFinished = true;
-            //  System.out.println(buffer.getAllTheFileWasStreamedToBuffer());
 
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }
 
+    @Override
+    public void run() {
+        readFileFromFileToBuffer();
+    }
 }
