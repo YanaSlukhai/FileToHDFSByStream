@@ -11,6 +11,10 @@ public class EntriesBufferReader implements Runnable {
     private String topic;
     private Integer PROCESSED_LINES_COUNT = 0;
 
+    public Integer getProcessedLinesCount() {
+        return PROCESSED_LINES_COUNT;
+    }
+
     public EntriesBufferReader(FileEntriesBuffer<String> buffer, Producer producer, String topic) {
         this.buffer = buffer;
         this.topic = topic;

@@ -14,7 +14,7 @@ public class EntriesBufferWriterTest {
     private EntriesBufferWriter bufferWriter;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp(){
         String filePath = "src/test/resources/ex_train.csv";
         LinkedBlockingQueue<String> queue = new LinkedBlockingQueue();
         buffer = new FileEntriesBuffer(queue);

@@ -37,8 +37,6 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <scala-version>2.11</scala-version>
         <spark-version>2.4.0</spark-version>
-        <mockito-version>2.23.4</mockito-version>
-        <junit-version> 4.12</junit-version>
     </properties>
 
     <dependencies>
@@ -52,18 +50,7 @@
             <artifactId>spark-streaming-kafka-0-10_${scala-version}</artifactId>
             <version>${spark-version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito-version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/junit/junit -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit-version}</version>
-            <scope>test</scope>
-        </dependency>
+
     </dependencies>
 
 </project>

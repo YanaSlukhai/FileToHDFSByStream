@@ -24,14 +24,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="285d2b61-ebbd-44cf-b125-72681e175948" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/FileToKafkaTopicStreamer/src/test/java/services/EntriesBufferReaderTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FileToKafkaTopicStreamer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FileToKafkaTopicStreamer/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/controllers/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/controllers/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/model/FileEntriesBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/model/FileEntriesBuffer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/services/EntriesBufferReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/services/EntriesBufferReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/services/EntriesBufferWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/services/EntriesBufferWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileToKafkaTopicStreamer/src/test/java/services/EntriesBufferWriterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/FileToKafkaTopicStreamer/src/test/java/services/EntriesBufferWriterTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/KafkaTopicEventsToHDFSFile/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/KafkaTopicEventsToHDFSFile/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KafkaTopicEventsToHDFSFile/src/main/java/services/SparkKafkaTopicConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/KafkaTopicEventsToHDFSFile/src/main/java/services/SparkKafkaTopicConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/FileToKafkaTopicStreamer/target/" />
     <ignored path="$PROJECT_DIR$/KafkaTopicEventsToHDFSFile/target/" />
@@ -48,12 +47,40 @@
       <file leaf-file-name="EntriesBufferReader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/services/EntriesBufferReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+            <state relative-caret-position="493">
+              <caret line="52" column="41" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
               <folding>
+                <element signature="e#413#414#0" expanded="true" />
+                <element signature="e#457#458#0" expanded="true" />
                 <element signature="e#1387#1388#0" expanded="true" />
                 <element signature="e#1454#1455#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EntriesBufferReaderTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/FileToKafkaTopicStreamer/src/test/java/services/EntriesBufferReaderTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="464">
+              <caret line="42" column="27" lean-forward="true" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FileToHDFSbyStream.iml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FileToHDFSbyStream.iml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="413">
+              <caret line="40" column="21" lean-forward="true" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -82,8 +109,8 @@
       <file leaf-file-name="EntriesBufferWriter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/services/EntriesBufferWriter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="408">
+              <caret line="24" column="55" selection-start-line="24" selection-start-column="55" selection-end-line="24" selection-end-column="55" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1155#1156#0" expanded="true" />
@@ -93,20 +120,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EntriesBufferWriterTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EntriesBufferWriterTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FileToKafkaTopicStreamer/src/test/java/services/EntriesBufferWriterTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="25" column="27" lean-forward="true" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Integer.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_141/src.zip!/java/lang/Integer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="838" column="7" lean-forward="true" selection-start-line="838" selection-start-column="7" selection-end-line="838" selection-end-column="7" />
+            <state relative-caret-position="289">
+              <caret line="24" column="47" lean-forward="true" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -116,45 +134,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="814">
               <caret line="100" selection-start-line="100" selection-end-line="100" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LinkedBlockingQueue.java" pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.8.0_141/src.zip!/java/util/concurrent/LinkedBlockingQueue.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="211" column="25" selection-start-line="211" selection-start-column="25" selection-end-line="211" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KafkaTopicConsumer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/KafkaTopicEventsToHDFSFile/src/main/java/services/KafkaTopicConsumer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/controllers/Controller.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FileToKafkaTopicStreamer/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1105">
-              <caret line="65" column="21" lean-forward="true" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -190,14 +169,16 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/KafkaTopicEventsToHDFSFile/src/main/java/controllers/Controller.java" />
         <option value="$PROJECT_DIR$/KafkaTopicEventsToHDFSFile/src/main/java/services/SparkKafkaTopicConsumer.java" />
-        <option value="$PROJECT_DIR$/KafkaTopicEventsToHDFSFile/pom.xml" />
         <option value="$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/services/EntriesBufferWriter.java" />
-        <option value="$PROJECT_DIR$/FileToKafkaTopicStreamer/pom.xml" />
-        <option value="$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/services/EntriesBufferReader.java" />
         <option value="$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/controllers/Controller.java" />
         <option value="$PROJECT_DIR$/FileToKafkaTopicStreamer/src/test/resources/ex_train.csv" />
         <option value="$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/model/FileEntriesBuffer.java" />
         <option value="$PROJECT_DIR$/FileToKafkaTopicStreamer/src/test/java/services/EntriesBufferWriterTest.java" />
+        <option value="$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/services/EntriesBufferReader.java" />
+        <option value="$PROJECT_DIR$/KafkaTopicEventsToHDFSFile/pom.xml" />
+        <option value="$PROJECT_DIR$/FileToKafkaTopicStreamer/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/FileToKafkaTopicStreamer/src/test/java/services/EntriesBufferReaderTest.java" />
       </list>
     </option>
   </component>
@@ -378,12 +359,35 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.EntriesBufferWriterTest.readFileFromFileToBufferTest">
+  <component name="RunManager" selected="JUnit.EntriesBufferReaderTest.readFileFromFileToBufferTest">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method>
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="EntriesBufferReaderTest.readFileFromFileToBufferTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="file-to-kafka-topic-streamer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="services" />
+      <option name="MAIN_CLASS_NAME" value="services.EntriesBufferReaderTest" />
+      <option name="METHOD_NAME" value="readFileFromFileToBufferTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
     </configuration>
     <configuration name="EntriesBufferWriterTest.readFileFromFileToBufferTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="file-to-kafka-topic-streamer" />
@@ -503,9 +507,11 @@
     <list>
       <item itemvalue="Maven.file-to-hdfs-by-stream [package]" />
       <item itemvalue="JUnit.EntriesBufferWriterTest.readFileFromFileToBufferTest" />
+      <item itemvalue="JUnit.EntriesBufferReaderTest.readFileFromFileToBufferTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.EntriesBufferReaderTest.readFileFromFileToBufferTest" />
         <item itemvalue="JUnit.EntriesBufferWriterTest.readFileFromFileToBufferTest" />
       </list>
     </recent_temporary>
@@ -537,7 +543,14 @@
       <option name="project" value="LOCAL" />
       <updated>1543354988328</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="some refactoring, unit tests started">
+      <created>1544015475357</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1544015475357</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -559,6 +572,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="0" width="1936" height="1056" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="12" />
       <window_info anchor="bottom" id="TODO" order="8" />
@@ -647,7 +661,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="consumer scratches" />
     <MESSAGE value="rename buffer ops" />
-    <option name="LAST_COMMIT_MESSAGE" value="rename buffer ops" />
+    <MESSAGE value="some refactoring, unit tests started" />
+    <option name="LAST_COMMIT_MESSAGE" value="some refactoring, unit tests started" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -655,16 +670,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/controllers/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/KafkaTopicEventsToHDFSFile/src/main/java/services/KafkaTopicConsumer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -846,9 +851,6 @@
       </provider>
     </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/spark/spark-streaming_2.11/2.4.0/spark-streaming_2.11-2.4.0.jar!/org/apache/spark/streaming/api/java/JavaDStreamLike.class" />
-    <entry file="file://$PROJECT_DIR$/FileToHDFSbyStream.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/test.csv" />
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/java/util/concurrent/LinkedBlockingQueue.java" />
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_101.jdk/Contents/Home/src.zip!/java/lang/Integer.java" />
@@ -863,16 +865,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/KafkaTopicEventsToHDFSFile/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="53" column="21" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -907,30 +899,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FileToKafkaTopicStreamer/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1105">
-          <caret line="65" column="21" lean-forward="true" selection-start-line="65" selection-start-column="21" selection-end-line="65" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/services/EntriesBufferReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" column="33" lean-forward="true" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-          <folding>
-            <element signature="e#1387#1388#0" expanded="true" />
-            <element signature="e#1454#1455#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/controllers/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_141/src.zip!/java/lang/Integer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="838" column="7" selection-start-line="838" selection-start-column="7" selection-end-line="838" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FileToKafkaTopicStreamer/src/test/resources/ex_train.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="814">
+          <caret line="100" selection-start-line="100" selection-end-line="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/services/EntriesBufferWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="55" selection-start-line="24" selection-start-column="55" selection-end-line="24" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1155#1156#0" expanded="true" />
+            <element signature="e#1196#1197#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -954,36 +954,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_141/src.zip!/java/lang/Integer.java">
+    <entry file="file://$PROJECT_DIR$/FileToHDFSbyStream.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FileToKafkaTopicStreamer/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="838" column="7" lean-forward="true" selection-start-line="838" selection-start-column="7" selection-end-line="838" selection-end-column="7" />
+        <state relative-caret-position="158">
+          <caret line="43" column="52" selection-start-line="43" selection-start-column="52" selection-end-line="43" selection-end-column="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FileToKafkaTopicStreamer/src/test/resources/ex_train.csv">
+    <entry file="file://$PROJECT_DIR$/KafkaTopicEventsToHDFSFile/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="814">
-          <caret line="100" selection-start-line="100" selection-end-line="100" />
+        <state relative-caret-position="192">
+          <caret line="38" column="44" selection-start-line="38" selection-start-column="44" selection-end-line="38" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/services/EntriesBufferWriter.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1155#1156#0" expanded="true" />
-            <element signature="e#1196#1197#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="413">
+          <caret line="40" column="21" lean-forward="true" selection-start-line="40" selection-start-column="21" selection-end-line="40" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FileToKafkaTopicStreamer/src/test/java/services/EntriesBufferWriterTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="25" column="27" lean-forward="true" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+        <state relative-caret-position="289">
+          <caret line="24" column="47" lean-forward="true" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FileToKafkaTopicStreamer/src/main/java/services/EntriesBufferReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="52" column="41" selection-start-line="52" selection-start-column="41" selection-end-line="52" selection-end-column="41" />
+          <folding>
+            <element signature="e#413#414#0" expanded="true" />
+            <element signature="e#457#458#0" expanded="true" />
+            <element signature="e#1387#1388#0" expanded="true" />
+            <element signature="e#1454#1455#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FileToKafkaTopicStreamer/src/test/java/services/EntriesBufferReaderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="42" column="27" lean-forward="true" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
