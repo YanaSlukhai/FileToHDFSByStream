@@ -9,8 +9,11 @@ public class EntriesBufferReader implements Runnable {
     private FileEntriesBuffer<String> buffer;
     private Producer producer;
     private String topic;
-    private volatile long startTime = System.nanoTime();
-    private Integer PROCESSED_LINES_COUNT = 0;
+    private volatile Integer LINES_PROCESSED = 0;
+
+    public Integer getProcessedLinesCount() {
+        return LINES_PROCESSED;
+    }
 
     public EntriesBufferReader(FileEntriesBuffer<String> buffer, Producer producer, String topic) {
         this.buffer = buffer;
@@ -18,11 +21,9 @@ public class EntriesBufferReader implements Runnable {
         this.producer = producer;
     }
 
-
     public void run() {
+        System.out.println("File reading from buffer is started via thread "+ Thread.currentThread().getId());
         readEntry();
-        System.out.println(System.nanoTime() - startTime + " COUNT = " + PROCESSED_LINES_COUNT);
-
     }
 
     private void readEntry() {
@@ -30,20 +31,18 @@ public class EntriesBufferReader implements Runnable {
             if (buffer.isEmpty()) {
                 try {
                     Thread.sleep(100);
-                    System.out.println("reader sleeps");
                 } catch (InterruptedException ignored) {
                 }
             } else {
                 synchronized (this) {
                     if (!buffer.isEmpty()) {
                         String fileEntry = buffer.poll();
-                        writeToKafkaTopic(fileEntry);
+                       // writeToKafkaTopic(fileEntry);
                     }
                 }
             }
         }
     }
-
 
     private Boolean readIsOver() {
         return buffer.streamingFinished && buffer.isEmpty();
@@ -51,7 +50,9 @@ public class EntriesBufferReader implements Runnable {
 
     private void writeToKafkaTopic(String message) {
         producer.send(new ProducerRecord(topic, message));
-        PROCESSED_LINES_COUNT++;
+        synchronized (this) {
+            LINES_PROCESSED++;
+        }
         //System.out.println(" Writing by thread " + Thread.currentThread().getId() + "   " + message);
     }
 

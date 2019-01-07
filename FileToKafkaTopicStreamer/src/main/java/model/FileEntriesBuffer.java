@@ -28,4 +28,8 @@ public class FileEntriesBuffer<T> {
             buffer.put(entry);
     }
 
+    public Integer size(){
+        return buffer.size();
+    }
+
 }
