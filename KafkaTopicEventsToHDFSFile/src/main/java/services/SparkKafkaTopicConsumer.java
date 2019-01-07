@@ -59,7 +59,6 @@ public class SparkKafkaTopicConsumer implements KafkaTopicConsumer{
         stream.mapToPair(record -> new Tuple2<>(record.key(), record.value())).saveAsHadoopFiles(
                 "hdfs://sandbox-hdp.hortonworks.com/user/spark/stream/", "txt",
                 Text.class, IntWritable.class, TextOutputFormat.class);
-
         streamingContext.start();
         try {
             streamingContext.awaitTermination();

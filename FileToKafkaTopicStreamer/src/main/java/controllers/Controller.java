@@ -12,9 +12,14 @@ import java.util.Properties;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class Controller {
-    public static void main(String[]args){
-        EntriesBufferWriter writer = new EntriesBufferWriter();
+
+    public static void main(String[] args) {
+        String fileName = args[0];
+        String topicName = args[1];
+        Integer readerThreadsCount = Integer.parseInt(args[2]);
+
         FileEntriesBuffer buffer = new FileEntriesBuffer(new LinkedBlockingQueue<>());
+        EntriesBufferWriter bufferWriter = new EntriesBufferWriter(fileName, buffer);
 
         Properties props = new Properties();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "sandbox-hdp.hortonworks.com:6667");
@@ -24,23 +29,24 @@ public class Controller {
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");
         Producer<String, String> producer = new KafkaProducer<>(props);
 
-
-        Thread tReader = new Thread(
-                ()-> writer.readFileFromFileToBuffer(args[0], buffer));
+        Thread tReader = new Thread(bufferWriter);
+        Long startTime = System.currentTimeMillis();
         tReader.start();
 
-        EntriesBufferReader buffertoKafkaWriter = new EntriesBufferReader(buffer, producer, args[1]);
-        ArrayList<Thread>  bufferToKafkaWriterthreads = new ArrayList<>();
-        for(int i = 0; i <4; i++ ) {
-            bufferToKafkaWriterthreads.add(new Thread(buffertoKafkaWriter));
-            bufferToKafkaWriterthreads.get(i).start();
+        EntriesBufferReader bufferReader = new EntriesBufferReader(buffer, producer, topicName);
+
+        ArrayList<Thread> bufferReaderThreads = new ArrayList<>();
+        for (int i = 0; i < readerThreadsCount; i++) {
+            bufferReaderThreads.add(new Thread(bufferReader));
+            bufferReaderThreads.get(i).start();
             try {
-                bufferToKafkaWriterthreads.get(i).join();
+                bufferReaderThreads.get(i).join();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
         producer.close();
+        System.out.println("All the lines was sent to kafka after " + (System.currentTimeMillis()- startTime)/1000 + " seconds");
 
     }
 }
