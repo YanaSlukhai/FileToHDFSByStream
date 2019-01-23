@@ -10,5 +10,8 @@
         <module name="kafka-topic-events-to-HDFS-file" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="KafkaTopicEventsToElastic" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

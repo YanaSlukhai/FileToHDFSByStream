@@ -36,7 +36,7 @@ public class EntriesBufferWriter implements Runnable {
                     Thread.sleep(1);
                 BookingSerializer serializer = new BookingSerializer();
                 System.out.println(serializer.serializeBookingCSV(readLine));
-               // buffer.put(serializer.serializeBookingCSV(readLine));
+                buffer.put(serializer.serializeBookingCSV(readLine));
             }
 
             buffer.streamingFinished = true;

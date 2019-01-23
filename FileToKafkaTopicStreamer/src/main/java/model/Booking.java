@@ -2,7 +2,7 @@ package model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Booking {
     private String date_time;
     private Integer site_name;

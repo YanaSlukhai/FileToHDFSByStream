@@ -4,14 +4,9 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.TextOutputFormat;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.spark.SparkConf;
-import org.apache.spark.SparkContext;
-import org.apache.spark.api.java.function.PairFunction;
 import org.apache.spark.streaming.Duration;
-import org.apache.spark.streaming.StreamingContext;
 import org.apache.spark.streaming.api.java.JavaInputDStream;
-import org.apache.spark.streaming.api.java.JavaPairDStream;
 import org.apache.spark.streaming.api.java.JavaStreamingContext;
 import org.apache.spark.streaming.kafka010.ConsumerStrategies;
 import org.apache.spark.streaming.kafka010.KafkaUtils;
@@ -20,26 +15,20 @@ import scala.Tuple2;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 
 
-public class SparkKafkaTopicConsumer implements KafkaTopicConsumer{
-    public void consumeKafkaTopic(String kafkaTopic) {
+public class SparkKafkaTopicConsumer implements KafkaTopicConsumer {
+    private Integer STREAMING_BATCH_INTERVAL = 100000;
+    private String HADOOP_FILES_LOCATION_PREFIX = "hdfs://sandbox-hdp.hortonworks.com/user/spark/stream/";
+
+    public void consumeKafkaTopic(String kafkaTopic, Map<String, Object> kafkaParams) {
         SparkConf conf = new SparkConf().setAppName("SparkKafkaTopicConsumer").setMaster("local[*]");
-        JavaStreamingContext sparkStreamingContext = new JavaStreamingContext(conf, new Duration(100000));
-        connectSparkStreamingToKafka(sparkStreamingContext, kafkaTopic);
+        JavaStreamingContext sparkStreamingContext = new JavaStreamingContext(conf, new Duration(STREAMING_BATCH_INTERVAL));
+        connectSparkStreamingToKafka(sparkStreamingContext, kafkaTopic, kafkaParams);
     }
 
-    private void connectSparkStreamingToKafka(JavaStreamingContext streamingContext, String kafkaTopic){
-
-        Map<String, Object> kafkaParams = new HashMap<>();
-        kafkaParams.put("bootstrap.servers","sandbox-hdp.hortonworks.com:6667");
-        kafkaParams.put("key.deserializer", StringDeserializer.class);
-        kafkaParams.put("value.deserializer", StringDeserializer.class);
-        kafkaParams.put("group.id", "1");
-        kafkaParams.put("auto.offset.reset","earliest");
-        kafkaParams.put("enable.auto.commit", false);
+    private void connectSparkStreamingToKafka(JavaStreamingContext streamingContext, String kafkaTopic, Map<String, Object> kafkaParams) {
 
         Collection<String> topics = Arrays.asList(kafkaTopic);
 
@@ -50,16 +39,10 @@ public class SparkKafkaTopicConsumer implements KafkaTopicConsumer{
                         ConsumerStrategies.<String, String>Subscribe(topics, kafkaParams)
                 );
 
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         stream.mapToPair(record -> new Tuple2<>(record.key(), record.value())).count().print();
         stream.mapToPair(record -> new Tuple2<>(record.key(), record.value())).saveAsHadoopFiles(
-                "hdfs://sandbox-hdp.hortonworks.com/user/spark/stream/", "txt",
+                HADOOP_FILES_LOCATION_PREFIX, "",
                 Text.class, IntWritable.class, TextOutputFormat.class);
-
         streamingContext.start();
         try {
             streamingContext.awaitTermination();

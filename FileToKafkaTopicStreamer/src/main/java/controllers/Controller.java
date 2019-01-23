@@ -14,15 +14,15 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class Controller {
 
     public static void main(String[] args) {
-        String fileName = "C:\\Users\\Yana\\Downloads\\all\\train.csv"; //args[0];
-        String topicName = "top";//args[1];
-        Integer readerThreadsCount = 1;// Integer.parseInt(args[2]);
+        String fileName = /*"C:\\Users\\Yana\\Downloads\\all\\train.csv"; */ args[0];
+        String topicName = /*"top";*/ args[1];
+        Integer readerThreadsCount =  Integer.parseInt(args[2]);
 
         FileEntriesBuffer buffer = new FileEntriesBuffer(new LinkedBlockingQueue<>());
         EntriesBufferWriter bufferWriter = new EntriesBufferWriter(fileName, buffer);
 
         Properties props = new Properties();
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:6667");
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(ProducerConfig.ACKS_CONFIG, "all");
         props.put(ProducerConfig.RETRIES_CONFIG, 0);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringSerializer");

@@ -37,7 +37,7 @@ public class EntriesBufferReader implements Runnable {
                 synchronized (this) {
                     if (!buffer.isEmpty()) {
                         String fileEntry = buffer.poll();
-                       // writeToKafkaTopic(fileEntry);
+                        writeToKafkaTopic(fileEntry);
                     }
                 }
             }

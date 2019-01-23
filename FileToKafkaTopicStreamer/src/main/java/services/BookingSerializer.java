@@ -62,8 +62,8 @@ public class BookingSerializer {
         );
         ObjectMapper mapper = new ObjectMapper();
         mapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
-        mapper.enable(SerializationFeature.INDENT_OUTPUT);
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        //mapper.enable(SerializationFeature.INDENT_OUTPUT);
+        //mapper.setSerializationInclusion(JsonInclude.Include.NON_EMPTY);
         String result = "";
         try {
             result = mapper.writeValueAsString( booking);
