@@ -9,10 +9,10 @@ public class EntriesBufferReader implements Runnable {
     private FileEntriesBuffer<String> buffer;
     private Producer producer;
     private String topic;
-    private volatile Integer LINES_PROCESSED = 0;
+    private volatile Integer linesProcessed = 0;
 
     public Integer getProcessedLinesCount() {
-        return LINES_PROCESSED;
+        return linesProcessed;
     }
 
     public EntriesBufferReader(FileEntriesBuffer<String> buffer, Producer producer, String topic) {
@@ -51,7 +51,7 @@ public class EntriesBufferReader implements Runnable {
     private void writeToKafkaTopic(String message) {
         producer.send(new ProducerRecord(topic, message));
         synchronized (this) {
-            LINES_PROCESSED++;
+            linesProcessed++;
         }
         //System.out.println(" Writing by thread " + Thread.currentThread().getId() + "   " + message);
     }

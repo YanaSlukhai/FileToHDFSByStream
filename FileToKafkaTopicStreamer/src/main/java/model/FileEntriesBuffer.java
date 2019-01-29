@@ -6,7 +6,6 @@ public class FileEntriesBuffer<T> {
     private LinkedBlockingQueue<T> buffer;
     public volatile Boolean streamingFinished = false;
     private static final Integer MAX_SIZE = 100000;
-
     public FileEntriesBuffer(LinkedBlockingQueue<T> buffer) {
         this.buffer = buffer;
     }

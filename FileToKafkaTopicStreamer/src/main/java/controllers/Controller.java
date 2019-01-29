@@ -9,6 +9,8 @@ import services.EntriesBufferReader;
 
 import java.util.ArrayList;
 import java.util.Properties;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class Controller {
@@ -35,16 +37,19 @@ public class Controller {
 
         EntriesBufferReader bufferReader = new EntriesBufferReader(buffer, producer, topicName);
 
-        ArrayList<Thread> bufferReaderThreads = new ArrayList<>();
+       // ArrayList<Thread> bufferReaderThreads = new ArrayList<>();
+        ExecutorService executor = Executors.newFixedThreadPool(readerThreadsCount);
         for (int i = 0; i < readerThreadsCount; i++) {
-            bufferReaderThreads.add(new Thread(bufferReader));
-            bufferReaderThreads.get(i).start();
-            try {
-                bufferReaderThreads.get(i).join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+           // bufferReaderThreads.add(new Thread(bufferReader));
+            executor.execute(bufferReader);
+//           // bufferReaderThreads.get(i).start();
+//            try {
+//                bufferReaderThreads.get(i).join();
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
         }
+        executor.shutdown();
         producer.close();
         System.out.println("All the " + bufferReader.getProcessedLinesCount() + " lines have been sent to kafka during " + (System.currentTimeMillis() - startTime) / 1000 + " seconds");
 
